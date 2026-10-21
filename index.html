@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffaf3">
+  <meta name="description" content="MenuFlex - Jelajahi menu favoritmu dengan mudah.">
+  <title>MenuFlex — Menu Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">m.</span>
+      <span>menu<span class="brand-accent">flex</span></span>
+    </a>
+
+    <span class="open-status">
+      <span class="status-dot"></span>
+      Freshly made, just for you
+    </span>
+
+    <button class="cart-button" id="openCart">
+      <span>Keranjang</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">☕ YOUR DAILY HAPPY PLACE</span>
+        <h1>Good food.<br> <span>Better mood.</span></h1>
+        <p>Temukan rasa favoritmu, nikmati setiap momen.
+           Pilih menu kesukaanmu tanpa perlu antre buku menu.</p>
+        <a href="#menu" class="primary-button">Jelajahi menu <span>↓</span></a>
+        <div class="hero-note">
+          <span class="note-icon">✦</span>
+          Dibuat dengan cinta, disajikan dengan rasa.
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="hero-label label-top">GOOD MOOD<br>GUARANTEED ✦</div>
+        <img
+          src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85"
+          alt="Kopi susu dingin"
+          class="hero-image">
+        <div class="floating-card">
+          <span class="floating-emoji">🤎</span>
+          <div>
+            <strong>Your daily ritual</strong>
+            <small>One sip at a time.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">MADE FOR YOUR CRAVINGS</span>
+          <h2>What's on the menu?</h2>
+          <p>Pilih yang kamu suka. Semuanya punya cerita.</p>
+        </div>
+        <span class="menu-tag">MENU DIGITAL ✳</span>
+      </div>
+
+      <div class="search-row">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search"
+            placeholder="Cari kopi, makanan, atau camilan..."
+            aria-label="Cari menu">
+          <kbd>/</kbd>
+        </label>
+        <select id="sortSelect" class="sort-select" aria-label="Urutkan menu">
+          <option value="default">Pilihan kami</option>
+          <option value="low">Harga terendah</option>
+          <option value="high">Harga tertinggi</option>
+          <option value="name">Nama A–Z</option>
+        </select>
+      </div>
+
+      <div class="category-list" id="categoryList">
+        <button class="category active" data-category="Semua">✦ Semua menu</button>
+        <button class="category" data-category="Kopi">☕ Kopi</button>
+        <button class="category" data-category="Non-Kopi">🥤 Non-kopi</button>
+        <button class="category" data-category="Makanan">🍝 Makanan</button>
+        <button class="category" data-category="Camilan">🥐 Camilan</button>
+      </div>
+
+      <div class="result-line">
+        <span id="resultCount">Menampilkan semua menu</span>
+        <span>Harga dalam rupiah (IDR)</span>
+      </div>
+
+      <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="bottom-banner">
+      <div class="banner-icon">♡</div>
+      <div>
+        <h3>Good things take time.</h3>
+        <p>Pesan favoritmu, duduk santai, dan nikmati harimu.</p>
+      </div>
+      <span class="banner-star">✳</span>
+    </section>
+
+    <footer class="footer">
+      <a href="#" class="brand footer-brand">
+        <span class="brand-icon">m.</span>
+        <span>menu<span class="brand-accent">flex</span></span>
+      </a>
+      <p>Made for good food & good mood. © <span id="year"></span></p>
+    </footer>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="cart-drawer" id="cartDrawer"
+    role="dialog" aria-modal="true" aria-labelledby="cartTitle"
+    aria-hidden="true">
+    <div class="drawer-header">
+      <div>
+        <span class="eyebrow">YOUR SELECTION</span>
+        <h2 id="cartTitle">Keranjang ♡</h2>
+      </div>
+      <button class="close-button" id="closeCart" aria-label="Tutup keranjang">✕</button>
+    </div>
+
+    <label class="table-label" for="tableNumber">Nomor meja (opsional)</label>
+    <input id="tableNumber" class="table-input" type="text"
+      placeholder="Contoh: A03" maxlength="12">
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+      <div class="total-line">
+        <span>Total pesanan</span>
+        <strong id="cartTotal">Rp0</strong>
+      </div>
+      <button id="checkoutButton" class="checkout-button">
+        Pesan via WhatsApp ↗
+      </button>
+      <p class="checkout-note">
+        Pesanan akan dikirim ke WhatsApp kafe untuk dikonfirmasi.
+      </p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
